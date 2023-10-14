@@ -9,7 +9,7 @@ public class QMove {
         //only the piece move, not the wall move
     }
 
-    public static void BuildWall(gameBoard q, int i, int j, int d){
+    public static void BuildWall(gameBoard q, int i, int j, TTTPiece p){
         //I will write this
     }
 }
