@@ -15,7 +15,12 @@ public class gameBoard implements Board{
             return sizej;
         }
         return sizei;
-
+    }
+    public int getSizei(){
+        return sizei;
+    }
+    public int getSizej(){
+        return sizej;
     }
 
     //initialization

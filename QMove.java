@@ -10,6 +10,29 @@ public class QMove {
     }
 
     public static void BuildWall(gameBoard q, int i, int j, TTTPiece p){
+        int sizei= q.getSizei();
+        int sizej= q.getSizej();
+        Cell[][] Board = q.Board;
         //I will write this
+        if(i<0||j<0||i>sizei||j>sizej){
+            System.out.println("Illiegal move!");
+            return;
+        }
+        if(Board[i][j].getId()!=0) {
+            System.out.println("Illiegal move!");
+            return;
+        }
+        if(p.getId()==-1){
+            if((Board[i][j-1].getId()==-1) ||(Board[i][j+1].getId()==-1)){
+                System.out.println("Illiegal move!");
+                return;
+            }
+        } else if (p.getId()==1) {
+            if((Board[i-1][j].getId()==1) ||(Board[i+1][j].getId()==1)){
+                System.out.println("Illiegal move!");
+                return;
+            }
+        }
+        Board[i][j]=p;
     }
 }
