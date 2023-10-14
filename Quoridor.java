@@ -39,6 +39,9 @@ public class Quoridor implements BoardGame{
             cBoard.Board[sizei-1][sizej/2].setId(-1);
             PrintBoard.print(cBoard,qBoard);
 
+            int Walla=sizei;
+            int Wallb=sizei;
+
             while (winner.getName().equals("")){
                 Player CurrentP =  null;
                 if(Turns%2==0){
@@ -52,6 +55,16 @@ public class Quoridor implements BoardGame{
                 System.out.println("enter A to put a wall, enter B to move your piece");
                 String[] AB = {"A", "B"};
                 String choiceS = inputV.inputSA(AB);
+                if(choiceS.equals("A")) {
+                    if((Turns%2==0) && Walla<=0){
+                        System.out.println("Wall used out, please move piece");
+                        choiceS="B";
+                    }
+                    if((Turns%2==1) && Wallb<=0){
+                        System.out.println("Wall used out, please move piece");
+                        choiceS="B";
+                    }
+                }
                 if(choiceS.equals("A")) {
 
                     System.out.println("enter first int as row");
@@ -73,6 +86,11 @@ public class Quoridor implements BoardGame{
                     //actuall move the pieces
                     System.out.println(CurrentP.getName() + "'s move: " + moveAi + ", " + moveAj);
                     QMove.BuildWall(qBoard,moveAi , moveAj , newP);
+                    if(Turns%2==0){
+                        Walla--;
+                    }else{
+                        Wallb--;
+                    }
                 }else {
                     System.out.println("enter L for left, R for right, or F for forward");
                     String[] LRF = {"L", "R", "F"};
