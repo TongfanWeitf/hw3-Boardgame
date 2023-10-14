@@ -27,4 +27,26 @@ public class inputV {
         }
         return smoveP;
     }
+
+    public static String inputSA(String[] SA){
+        Scanner myObj = new Scanner(System.in);
+
+        Boolean b=true;
+        while(b){
+            System.out.print("enter ");
+            for (int i=0; i<SA.length; i++){
+                System.out.print(SA[i]+" or ");
+            }
+            System.out.print("\n");
+            String smoveP=myObj.nextLine();
+            for (int i=0; i<SA.length; i++){
+                if(smoveP.equals(SA[i])){
+                    return smoveP;
+                }
+            }
+            System.out.println("Invalid input");
+
+        }
+        return "";
+    }
 }
