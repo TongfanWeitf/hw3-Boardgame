@@ -6,15 +6,16 @@ public class Menu {
         //validators
         System.out.println("Welcome to BoradGame of Tongfan Wei. Press Ctrl + C to exit anytime.");
         System.out.println("what game you want to play?: ");
-        System.out.println("A:Tictactoe B:Order&Chaos C:SuperTTT");
-        System.out.println("press A or B or C to continue");
+        System.out.println("A:Tictactoe B:Order&Chaos C:SuperTTT D:Quoridor");
+        System.out.println("press A or B or C or D to continue");
         Scanner myObj = new Scanner(System.in);
         String Choice=myObj.nextLine();
-        while(!(Choice.equals("A")) && !(Choice.equals("B")) && !(Choice.equals("C"))) {
+        while(!(Choice.equals("A")) && !(Choice.equals("B")) && !(Choice.equals("C")) &&
+                !(Choice.equals("D"))) {
             System.out.println("Invalid input");
             System.out.println("what game you want to play?: ");
-            System.out.println("A:Tictactoe B:Order&Chaos C:SuperTTT");
-            System.out.println("press A or B or C to continue");
+            System.out.println("A:Tictactoe B:Order&Chaos C:SuperTTT D:Quoridor");
+            System.out.println("press A or B or C or D to continue");
             Choice = myObj.nextLine();
         }
 
@@ -28,6 +29,9 @@ public class Menu {
         }else if(Choice.equals("C")){
             SuperTTT Sttt= new SuperTTT();
             Sttt.Play();
+        }else if(Choice.equals("D")){
+            Quoridor quoridor = new Quoridor();
+            quoridor.Play();
         }
     }
 }
