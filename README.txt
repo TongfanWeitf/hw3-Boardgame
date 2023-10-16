@@ -23,6 +23,10 @@ OACwin----
 TTTPieces---- X and O to put in the cell
 player----- players and scores
 inputV----used to input int and XO
+Quoridor---- play Quoridor
+PrintBoard---- printer for Quodior
+Qmove---- to move and build wall in Quodior
+Qwin---- wincheck in Quodior
 
 ## Notes
 ---------------------------------------------------------------------------
@@ -45,6 +49,12 @@ java -cp bin Main
 <Place here an example of how the program runs. Include both its
 outputs and correctly formatted inputs. Please clearly mark the inputs.>
 e.g.:
+(illegal move will jump your turn as a penalty)
+
+(for Quodior: Wall's cooridinate is the lower right corner of cell of same cooridinate
+  wall limit is the same as height
+  no addtional rule included)
+
 （for super Tic tec toe, use A,B,C... to refer to smaller boards.
 the size of small boards is always 3）
 Output:	what game you want to play?: A:Tictactoe B:Order&Chaos
