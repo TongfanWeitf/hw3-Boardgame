@@ -179,6 +179,7 @@ public class QMove {
     }
 
     public static void BuildWall(gameBoard q, int i, int j, TTTPiece p){
+        System.out.println("i: "+i+" j: "+j);
         int sizei= q.getSizei();
         int sizej= q.getSizej();
         Cell[][] Board = q.Board;
@@ -192,12 +193,36 @@ public class QMove {
             return;
         }
         if(p.getId()==-1){
-            if((Board[i][j-1].getId()==-1) ||(Board[i][j+1].getId()==-1)){
+            int upper=0;
+            if(j-1<0){
+                upper=0;
+            }else{
+                upper=Board[i][j-1].getId();
+            }
+            int lower=0;
+            if(j+1>=sizej){
+                lower=0;
+            }else{
+                lower=Board[i][j+1].getId();
+            }
+            if((upper==-1) ||(lower==-1)){
                 System.out.println("Illiegal move!");
                 return;
             }
         } else if (p.getId()==1) {
-            if((Board[i-1][j].getId()==1) ||(Board[i+1][j].getId()==1)){
+            int left=0;
+            if(i-1<0){
+                left=0;
+            }else{
+                left=Board[i-1][j].getId();
+            }
+            int right=0;
+            if(i+1>=sizei){
+                right=0;
+            }else{
+                right=Board[i+1][j].getId();
+            }
+            if((left==1) ||(right==1)){
                 System.out.println("Illiegal move!");
                 return;
             }

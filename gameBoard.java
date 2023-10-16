@@ -6,6 +6,13 @@ public class gameBoard implements Board{
     public String getBoardij(int i, int j) {
         return Board[i][j].getName();
     }
+
+    public int getBoardOut(int i, int j){
+//        i=i+1;
+//        j=j+1;
+        if(i<0 || i>=sizei || j<0 || j>=sizej){return 0;}
+        return Board[i][j].getId();
+    }
     public Cell[][] Board;
     private int sizei;
     private int sizej;

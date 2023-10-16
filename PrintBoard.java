@@ -7,7 +7,7 @@ public class PrintBoard {
         // get row and column count
         int row = g.getSizei();
         int col = g.getSizej();
-
+        q.print();
         // construct board header
         String boardStr = "";
         for (int i = 0; i < col; i++) {
@@ -20,33 +20,72 @@ public class PrintBoard {
         int wallIdx = 0;
         while (pieceIdx < row) {
             // construct piece string
+            boardStr += "|";
             for (int j = 0; j < col; j++) {
-                boardStr += "|" + g.getBoardij(pieceIdx, j) + " ";
+                boardStr += g.getBoardij(pieceIdx, j) + " ";
+                if (j != col-1) {
+                    if (pieceIdx == 0) {
+                        if (q.getBoardOut(0,j) == -1) {
+                            boardStr += "*";
+                        } else {
+                            boardStr += "|";
+                        }
+                    } else if (pieceIdx == row-1) {
+                        if (q.getBoardOut(row-2,j) == -1) {
+                            boardStr += "*";
+                        } else {
+                            boardStr += "|";
+                        }
+                    } else {
+                        if (q.getBoardOut(pieceIdx-1,j) == -1 || q.getBoardOut(pieceIdx,j) == -1) {
+                            boardStr += "*";
+                        } else {
+                            boardStr += "|";
+                        }
+                    }
+                }
             }
             boardStr += "|\n";
 
             // construct wall string
             if (pieceIdx != row - 1) {
-                boardStr += "+";
+                boardStr += "";
                 // construct initial wall strings
-                String[] wallStrs = new String[2*col-1];
-                for (int k = 0; k < wallStrs.length; k++) {
-                    if (k % 2 == 0) {
-                        wallStrs[k] = "--";
-                    } else {
-                        wallStrs[k] = "+";
-                    }
-                }
-                for (int j = 0; j < col-1; j++) {
+                String[] wallStrs = new String[3*col];
+                for (int j = 0; j < 3*col; j++) {
                     // construct wall strings
-                    int curWallId = q.Board[wallIdx][j].getId();
-                    if (curWallId == 1) {
-                        wallStrs[j]   = "——";
-                        wallStrs[j+1] = "——";
-                        wallStrs[j+2] = "——";
-                    } else if (curWallId == -1) {
-                        wallStrs[j+1] = "|";
+                    int curWallId0 = q.getBoardOut(wallIdx,j/3);
+                    int curWallId = q.getBoardOut(wallIdx,j/3-1);
+                    int curWallId2 = q.getBoardOut(wallIdx,j/3-2);
+                    if(j%3==0){
+                        if(curWallId==0){
+                            wallStrs[j]   = "+";
+                        }else{
+                            wallStrs[j]   = "*";
+                        }
                     }
+                    if(j%3!=0){
+                        if(curWallId==1 || curWallId0==1){
+                            wallStrs[j]   = "*";
+                        }else{
+                            wallStrs[j]   = "-";
+                        }
+                    }
+//                    if (curWallId1 == 1) {
+//                        wallStrs[j+2]   = "**";
+//                        wallStrs[j+3] = "*";
+//                        wallStrs[j+4] = "**";
+//                    } else if (curWallId1 == -1) {
+//                        wallStrs[j+2] = "*";
+//                    }
+//                    int curWallId2 = q.getBoardOut(wallIdx,j+1);
+//                    if (curWallId2 == 1) {
+//                        wallStrs[j+2]   = "**";
+//                        wallStrs[j+3] = "*";
+//                        wallStrs[j+4] = "**";
+//                    } else if (curWallId2 == -1) {
+//                        wallStrs[j+2] = "*";
+//                    }
                 }
                 for (int k = 0; k < wallStrs.length; k++) {
                     boardStr += wallStrs[k];
