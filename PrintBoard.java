@@ -20,8 +20,30 @@ public class PrintBoard {
         int wallIdx = 0;
         while (pieceIdx < row) {
             // construct piece string
+            boardStr += "|";
             for (int j = 0; j < col; j++) {
-                boardStr += "|" + g.getBoardij(pieceIdx, j) + " ";
+                boardStr += g.getBoardij(pieceIdx, j) + " ";
+                if (j != col-1) {
+                    if (pieceIdx == 0) {
+                        if (q.getBoard()[0][j].getId() == -1) {
+                            boardStr += "*";
+                        } else {
+                            boardStr += "|";
+                        }
+                    } else if (pieceIdx == row-1) {
+                        if (q.getBoard()[row-2][j].getId() == -1) {
+                            boardStr += "*";
+                        } else {
+                            boardStr += "|";
+                        }
+                    } else {
+                        if (q.getBoard()[pieceIdx-1][j].getId() == -1 || q.getBoard()[pieceIdx][j].getId() == -1) {
+                            boardStr += "*";
+                        } else {
+                            boardStr += "|";
+                        }
+                    }
+                }
             }
             boardStr += "|\n";
 
@@ -41,11 +63,11 @@ public class PrintBoard {
                     // construct wall strings
                     int curWallId = q.Board[wallIdx][j].getId();
                     if (curWallId == 1) {
-                        wallStrs[j]   = "——";
-                        wallStrs[j+1] = "——";
-                        wallStrs[j+2] = "——";
+                        wallStrs[j+2]   = "**";
+                        wallStrs[j+3] = "*";
+                        wallStrs[j+4] = "**";
                     } else if (curWallId == -1) {
-                        wallStrs[j+1] = "|";
+                        wallStrs[j+2] = "*";
                     }
                 }
                 for (int k = 0; k < wallStrs.length; k++) {
