@@ -7,17 +7,9 @@ public class Menu {
         System.out.println("Welcome to BoradGame of Tongfan Wei. Press Ctrl + C to exit anytime.");
         System.out.println("what game you want to play?: ");
         System.out.println("A:Tictactoe B:Order&Chaos C:SuperTTT D:Quoridor");
-        System.out.println("press A or B or C or D to continue");
         Scanner myObj = new Scanner(System.in);
-        String Choice=myObj.nextLine();
-        while(!(Choice.equals("A")) && !(Choice.equals("B")) && !(Choice.equals("C")) &&
-                !(Choice.equals("D"))) {
-            System.out.println("Invalid input");
-            System.out.println("what game you want to play?: ");
-            System.out.println("A:Tictactoe B:Order&Chaos C:SuperTTT D:Quoridor");
-            System.out.println("press A or B or C or D to continue");
-            Choice = myObj.nextLine();
-        }
+        String[] SA = {"A","B","C","D"};
+        String Choice=inputV.inputSA(SA);
 
         //go to the game and play
         if(Choice.equals("A")){

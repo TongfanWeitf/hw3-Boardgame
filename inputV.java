@@ -33,9 +33,9 @@ public class inputV {
 
         Boolean b=true;
         while(b){
-            System.out.print("enter ");
-            for (int i=0; i<SA.length; i++){
-                System.out.print(SA[i]+" or ");
+            System.out.print("enter "+SA[0]);
+            for (int i=1; i<SA.length; i++){
+                System.out.print(" or "+SA[i]);
             }
             System.out.print("\n");
             String smoveP=myObj.nextLine();
