@@ -7,7 +7,7 @@ public class PrintBoard {
         // get row and column count
         int row = g.getSizei();
         int col = g.getSizej();
-        q.print();
+        //q.print();
         // construct board header
         String boardStr = "";
         for (int i = 0; i < col; i++) {
@@ -71,21 +71,6 @@ public class PrintBoard {
                             wallStrs[j]   = "-";
                         }
                     }
-//                    if (curWallId1 == 1) {
-//                        wallStrs[j+2]   = "**";
-//                        wallStrs[j+3] = "*";
-//                        wallStrs[j+4] = "**";
-//                    } else if (curWallId1 == -1) {
-//                        wallStrs[j+2] = "*";
-//                    }
-//                    int curWallId2 = q.getBoardOut(wallIdx,j+1);
-//                    if (curWallId2 == 1) {
-//                        wallStrs[j+2]   = "**";
-//                        wallStrs[j+3] = "*";
-//                        wallStrs[j+4] = "**";
-//                    } else if (curWallId2 == -1) {
-//                        wallStrs[j+2] = "*";
-//                    }
                 }
                 for (int k = 0; k < wallStrs.length; k++) {
                     boardStr += wallStrs[k];

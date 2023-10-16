@@ -27,6 +27,7 @@ public class inputV {
         }
         return smoveP;
     }
+    // to input a choice in a array of string
 
     public static String inputSA(String[] SA){
         Scanner myObj = new Scanner(System.in);

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// to play Quodirdor
 public class Quoridor implements BoardGame{
     public String getName(){
         return "Quoridor";
@@ -65,8 +66,8 @@ public class Quoridor implements BoardGame{
                         choiceS="B";
                     }
                 }
-                if(choiceS.equals("A")) {
-
+                if(choiceS.equals("A")) {// build a wall
+                    //validator for move inputs
                     System.out.println("enter first int as row");
                     int moveAi = inputV.inputInt(1, sizei-1);
 
@@ -83,7 +84,7 @@ public class Quoridor implements BoardGame{
                         newP.setId(-1);
                     }
 
-                    //actuall move the pieces
+                    //actuall build the wall
                     System.out.println(CurrentP.getName() + "'s move: " + moveAi + ", " + moveAj);
                     QMove.BuildWall(qBoard,moveAi-1 , moveAj-1 , newP);
                     if(Turns%2==0){
@@ -91,10 +92,12 @@ public class Quoridor implements BoardGame{
                     }else{
                         Wallb--;
                     }
-                }else {
+                }else {// move a piece
+                    //validator for move inputs
                     System.out.println("enter L for left, R for right, or F for forward");
                     String[] LRF = {"L", "R", "F"};
                     String smoveP = inputV.inputSA(LRF);
+                    //actuall move the pieces
                     QMove.Move(cBoard, qBoard, smoveP, Turns);
 
                 }

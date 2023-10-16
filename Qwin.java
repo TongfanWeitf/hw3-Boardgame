@@ -1,3 +1,4 @@
+// wincheck for Quoridor
 public class Qwin implements winConditon{
     private static gameBoard B;
     public static int winCheck(gameBoard b){
