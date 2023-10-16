@@ -162,6 +162,17 @@ public class QMove {
             }
         }
 
+        if(g.getBoard()[curRow][curCol].getId()!=0 && !m.equals("F")) {
+            System.out.println("Illegal move!");
+            return;
+        }
+        if(g.getBoard()[curRow][curCol].getId()!=0 && m.equals("F")) {
+            if(Turns%2==0){
+                curRow--;
+            }else{
+                curRow++;
+            }
+        }
         // check move is valid or not
         g.Move(curRow, curCol, targetCell);
         g.getBoard()[oldRow][oldCol] = new TTTPiece(0);
